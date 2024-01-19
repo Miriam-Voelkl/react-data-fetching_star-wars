@@ -1,6 +1,7 @@
 import Card from "../../components/Card";
 import Layout from "../../components/Layout";
 import useSWR from "swr";
+import { useRouter } from "next/router";
 
 const fetcher = async (url) => {
   const res = await fetch(url);
@@ -16,7 +17,9 @@ const fetcher = async (url) => {
 };
 
 export default function Character() {
-  const id = 1;
+  const router = useRouter();
+  const { id } = router.query;
+
   const {
     data: character,
     error,
